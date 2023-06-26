@@ -87,10 +87,7 @@ public class UPDATE extends JFrame {
         regresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CRUDGUI crudGUI = new CRUDGUI();
-                crudGUI.setLocationRelativeTo(null);
-                crudGUI.setVisible(true);
-                dispose(); // Cierra el formulario actual (CREATE)
+                regresar();
             }
         });
 
@@ -129,6 +126,7 @@ public class UPDATE extends JFrame {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            regresar();
         }
 
         JOptionPane.showMessageDialog(this, "No se encontró una persona con la identificación especificada");
@@ -194,5 +192,11 @@ public class UPDATE extends JFrame {
         sexoTextField.setText("");
         correoTextField.setText("");
         direccionTextField.setText("");
+    }
+    public void regresar(){
+        CRUDGUI crudGUI = new CRUDGUI();
+        crudGUI.setLocationRelativeTo(null);
+        crudGUI.setVisible(true);
+        dispose(); // Cierra el formulario actual (CREATE)
     }
 }

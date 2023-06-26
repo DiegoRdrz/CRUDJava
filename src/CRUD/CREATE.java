@@ -83,10 +83,7 @@ public class CREATE extends JFrame {
         regresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CRUDGUI crudGUI = new CRUDGUI();
-                crudGUI.setLocationRelativeTo(null);
-                crudGUI.setVisible(true);
-                dispose(); // Cierra el formulario actual (CREATE)
+                regresar();
             }
         });
 
@@ -116,12 +113,18 @@ public class CREATE extends JFrame {
 
         JOptionPane.showMessageDialog(this, "Persona agregada correctamente");
 
-        // Limpiar campos después de agregar
         nombreTextField.setText("");
         identificacionTextField.setText("");
         edadTextField.setText("");
         sexoTextField.setText("");
         correoTextField.setText("");
         direccionTextField.setText("");
+    }
+
+    public void regresar(){
+        CRUDGUI crudGUI = new CRUDGUI();
+        crudGUI.setLocationRelativeTo(null);
+        crudGUI.setVisible(true);
+        dispose();
     }
 }

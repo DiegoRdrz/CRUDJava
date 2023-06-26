@@ -46,10 +46,7 @@ public class DELETE extends JFrame {
         regresarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CRUDGUI crudGUI = new CRUDGUI();
-                crudGUI.setLocationRelativeTo(null);
-                crudGUI.setVisible(true);
-                dispose(); // Cierra el formulario actual (CREATE)
+                regresar();
             }
         });
 
@@ -90,7 +87,13 @@ public class DELETE extends JFrame {
 
         JOptionPane.showMessageDialog(this, "Persona eliminada correctamente");
 
-        // Limpiar campos después de eliminar
         identificacionTextField.setText("");
+    }
+
+    public void regresar(){
+        CRUDGUI crudGUI = new CRUDGUI();
+        crudGUI.setLocationRelativeTo(null);
+        crudGUI.setVisible(true);
+        dispose();
     }
 }

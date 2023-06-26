@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class CRUDGUI extends JFrame {
     private JTextArea personasTextArea;
@@ -21,7 +19,7 @@ public class CRUDGUI extends JFrame {
         JPanel mostrarPanel = new JPanel();
         mostrarPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         mostrarPanel.setLayout(new BorderLayout());
-        mostrarPanel.add(new JLabel("Personas:"), BorderLayout.NORTH);
+        mostrarPanel.add(new JLabel("Personas Registradas:"), BorderLayout.NORTH);
         mostrarPanel.add(new JScrollPane(personasTextArea), BorderLayout.CENTER);
 
         JButton agregarButton = new JButton("Crear");
@@ -69,8 +67,7 @@ public class CRUDGUI extends JFrame {
         add(mostrarPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        cargarPersonas();
-        setVisible(true);
+        mostrarPersonas();
     }
 
     public void mostrarPersonas() {
@@ -81,11 +78,18 @@ public class CRUDGUI extends JFrame {
                 personasTextArea.append(linea + "\n");
             }
         } catch (IOException e) {
+            crearArchivoPersonas();
+        }
+    }
+
+    public void crearArchivoPersonas() {
+        try {
+            FileWriter fileWriter = new FileWriter("src/CRUD/personas.txt");
+            fileWriter.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void cargarPersonas() {
-        mostrarPersonas();
-    }
+
 }
